@@ -1,0 +1,157 @@
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// for scrollreveal or simiral plugins to prevent x scroll.
+// need to add the same rule to some inner wrappers in some cases
+body, .main-wrapper {
+  overflow-x: hidden;
+}
+.container-fluid {
+  .no-padding;
+}
+.main-wrapper {
+  max-width: @site-width;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+figure {
+  margin: 0;
+}
+
+button {
+  .clean-button;
+  cursor: pointer;
+}
+
+h2 {
+  margin-top: 0;
+  .relative;
+  z-index: 2;
+  font-size: 35px;
+  &::before {
+    content: '';
+    .absolute;
+    width: 0px;
+    height: 115%;
+    background: @main-color;
+    z-index: -1;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -14px;
+    transition: width .6s cubic-bezier(0.86, 0, 0.07, 1);
+    transition-delay: .25s;
+  }
+  &.is-active {
+    &::before {
+      width: 50px;
+    }
+  }
+}
+
+// ^-^ STICKY TOP ^-^
+.top-sticky {
+  .fixed;
+  .left-top;
+  .full-width;
+  margin-top: 50px;
+  z-index: 99;
+  font-weight: 700;
+  font-size: 16px;
+}
+.projects-link {
+  color: white;
+}
+.menu-btn {
+  color: #eee;
+  letter-spacing: inherit;
+  &--text {
+    margin-top: -2px;
+    transition: opacity .3s ease-in-out;
+  }
+  &:hover {
+    .hamburger {
+      &--middle {
+        transform: translateX(0);
+        width: 16px;
+      }
+    }
+    .menu-btn--text {
+      opacity: 0.7;
+    }
+  }
+  &.is-active {
+    .hamburger {
+      transform: rotate(90deg);
+    }
+  }
+}
+.logo {
+  width: 54px;
+}
+@media(max-width: @sm) {
+  .top-sticky {
+    margin-top: 25px;
+    padding: 0 20px;
+  }
+}
+
+// ^-^ VIEWER TWIN ^-^
+.viewer-twin {
+  .hide;
+  .fixed;
+  .left-top;
+  z-index: 101;
+}
+
+// ^-^ FOOTER ^-^
+.site-footer {
+  .phone {
+    margin-bottom: 10px;
+  }
+  padding: 50px 5px;
+  .flex;
+  .flex-column;
+  .flex-align-center;
+  .socials {
+    margin-top: 30px;
+    li {
+      .inline-block;
+      margin: 0 5px;
+    }
+    a {
+      font-size: 24px;
+      transition: opacity .3s ease-in-out;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+// ^-^ FANCY SCROLL ^-^
+body {
+  &::-webkit-scrollbar-track {
+    background-color: @dark-color;
+    border-radius: 45px;
+  }
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: #fff;
+    border-radius: 45px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: @main-color;
+    border-radius: 45px;
+  }
+}

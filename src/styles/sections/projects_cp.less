@@ -1,0 +1,250 @@
+.projects-section {
+  padding-top: 225px;
+  padding-bottom: 80px;
+  h2 {
+    margin-bottom: 70px;
+  }
+  .project-photo-wrap {
+    overflow: hidden;
+  }
+}
+.projects-list {
+  width: 90%;
+  li {
+    margin-bottom: 30px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  button {
+    margin-bottom: 7px;
+    .relative;
+    line-height: 18px;
+    .left;
+    font-weight: 700;
+    outline: none;
+    &::after {
+      content: '';
+      .absolute;
+      width: 12px;
+      height: 4px;
+      background: @main-color;
+      bottom: -6px;
+      left: 0;
+      transition: width .3s ease-out;
+    }
+    &:focus, &:hover {
+      &::after {
+        width: 84px;
+      }
+    }
+  }
+  span {
+    font-size: 14px;
+    .block;
+    opacity: 0.6;
+  }
+}
+
+.project-photo {
+  .resp-img;
+  max-height: 600px;
+}
+
+@media(max-width: 1500px) {
+  .projects-section {
+    padding-bottom: 75px;
+  }
+}
+@media(max-width: @lg) {
+  .projects-section {
+    padding-top: 300px;
+    h2 {
+      margin-bottom: 40px;
+    }
+    li {
+      margin-bottom: 15px;
+    }
+  }
+}
+@media(max-width: @md) {
+  .projects-section {
+    padding-bottom: 0;
+  }
+  .project-photo-wrap {
+    .hide;
+  }
+}
+@media(max-width: 600px) {
+  .projects-section {
+    padding-top: 250px;
+  }
+}
+@media(max-width: 500px) {
+  .projects-section {
+    padding-top: 200px;
+  }
+}
+@media(max-width: 400px) {
+  .projects-section {
+    padding-top: 150px;
+  }
+}
+@media(max-width: @sm) {
+  .projects-section {
+    &--text-wrap {
+      padding-left: 15px;
+    }
+  }
+}
+
+
+// ^-^ PROJECT VIEWER ^-^
+@view-base-margin: 20px;
+.project-viewer {
+  padding: 0;
+  .fixed;
+  .left-top;
+  .flex-center;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  display: none;
+  color: white;
+  opacity: 0;
+  background: @dark-color;
+  &--inner {
+    max-height: 80vh;
+    overflow: auto;
+  }
+  &--close {
+    top: 50px;
+    right: 100px;
+  }
+  &--count {
+    .flex;
+    .flex-align-center;
+    font-weight: 700;
+    &::before {
+      content: '';  
+      width: 20px;
+      height: 4px;
+      margin-right: 10px;
+      background-color: white;
+    }
+  }
+  &--title {
+    max-width: 80%;
+    font-size: 35px;
+    line-height: 34px;
+    margin-top: @view-base-margin;
+    margin-bottom: @gt * @view-base-margin;
+  }
+  li {
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  ul {
+    margin-bottom: pow(@gt, 2) * @view-base-margin;
+  }
+  &--desc {
+    max-width: 60%;
+    margin-top: 0;
+    margin-bottom: pow(@gt, 2) * @view-base-margin;
+  }
+  &--info-left, &--info-right {
+    .inline-block;
+  }
+  &--info-left {
+    min-width: 120px;
+    opacity: 0.5;
+  }
+  &--area {
+    .relative;
+    &::after {
+      content: 'м';
+    }
+    &::before {
+      content: '2';
+      .absolute;
+      top: -1px;
+      right: -7px;
+      font-size: 12px;
+    }
+  }
+  &--photo {
+    opacity: 0;
+    .resp-img;
+  }
+  &--arrow {
+    transition: opacity .3s ease-in-out;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  &--arrow-left {
+    margin-right: 15px;
+  }
+}
+@media(max-width: 1660px) {
+  .project-viewer {
+    ul {
+      margin-bottom: 25px;
+    }
+    &--desc {
+      margin-bottom: 25px;
+      max-width: 75%;
+    }
+  }
+}
+@media(max-width: 1400px) {
+  .project-viewer {
+    &--title {
+      max-width: 95%;
+      font-size: 30px;
+      line-height: 27px;
+      margin-bottom: 22px;
+    }
+    &--desc {
+      max-width: 95%;
+    }
+  }
+}
+@media(max-width: @xl) {
+  .project-viewer {
+    &--count {
+      .hide;
+    }
+    &--title {
+      margin-top: 0;
+    }
+  }
+}
+@media(max-width: @lg) {
+  .project-viewer--close {
+    top: 25px;
+    right: 50px;
+  }
+}
+@media(max-width: @sm) {
+  .project-viewer {
+    &--text {
+      padding-top: 25px;
+      padding-left: 15px;
+    }
+  }
+}
+@media(max-width: 700px) {
+  .project-viewer {
+    padding-bottom: 15px;
+    .flex-align-end;
+  }
+}
+@media(max-width: 400px) {
+  .project-viewer--close {
+    top: 15px;
+    right: 25px;
+  }
+}

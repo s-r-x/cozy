@@ -1,0 +1,28 @@
+{
+  "projects": [
+    {
+      "title": "Уютный загородный дом",
+      "city": "Ханты-Мансийск",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "year": 2019,
+      "area": 300,
+      "photo": "/project1.jpg"
+    },
+    {
+      "title": "Компактная холостяцкая квартира",
+      "city": "Москва",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "year": 2018,
+      "area": 30,
+      "photo": "/project2.jpg"
+    },
+    {
+      "title": "Квартира для молодой девушки в скандинавском стиле",
+      "city": "Ханты-Мансийск",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "year": 2018,
+      "area": 42,
+      "photo": "/project3.jpg"
+    }
+  ]
+}

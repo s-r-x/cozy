@@ -1,0 +1,17 @@
+<section id="furniture-section" class="furniture-section">
+  <div class="row">
+    <div class="col-xl-10 offset-xl-2 offset-sm-1 col-sm-11">
+      <h2>Мебель</h2>
+      <ul class="furniture-list">
+        <% furniture.forEach(item => { %>      
+          <li class="furniture--item">
+            <figure class="furniture--photo-wrap">
+              <img class="furniture--photo" src=<%= imagesBaseUrl + item.photo %> alt="">
+            </figure>
+            <span class="furniture--title"><%= item.text %></span>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+{
+  "furniture": [
+    {
+      "text": "Норд бриз",
+      "photo": "/furniture1.jpg"
+    },
+    {
+      "text": "Трана",
+      "photo": "/furniture2.jpg"
+    },
+    {
+      "text": "Омэр",
+      "photo": "/furniture3.jpg"
+    },
+    {
+      "text": "Сиэнта",
+      "photo": "/furniture4.jpg"
+    },
+    {
+      "text": "Уокер",
+      "photo": "/furniture5.jpg"
+    },
+    {
+      "text": "Нанж",
+      "photo": "/furniture6.jpg"
+    }
+  ]
+}

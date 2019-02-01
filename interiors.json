@@ -1,0 +1,29 @@
+{
+  "interiors": [
+    {
+      "photo": "/interior1.jpg",
+      "year": 2019,
+      "title": "Кафе «Монблан»"
+    },
+    {
+      "photo": "/interior2.jpg",
+      "year": 2018,
+      "title": "Бар «Токио»"
+    },
+    {
+      "photo": "/interior3.jpg",
+      "year": 2018,
+      "title": "Загородный клуб «Пинта»"
+    },
+    {
+      "photo": "/interior4.jpg",
+      "year": 2018,
+      "title": "Современная уборная"
+    },
+    {
+      "photo": "/interior5.jpg",
+      "year": 2018,
+      "title": "Уютная гостиная"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+<section id="projects-section" class="projects-section">
+  <div class="row">
+    <div class="col-xl-3 offset-xl-2 offset-sm-1 col-md-4">
+      <div class="projects-section--text-wrap">
+      <h2>Наши последние проекты</h2>
+      <ul class="projects-list">
+        <% projects.forEach((project, i) => { %>
+          <li>
+            <button data-project=<%= i %>><%=project.title %></button>
+            <span><%= project.city + ", " + project.year %></span>
+          </li>
+        <% }) %>
+      </ul>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <figure class="project-photo-wrap">
+        <img src=<%= imagesBaseUrl + projects[0].photo %> class="project-photo" alt="фото проекта">
+      </figure>
+    </div>
+  </div>
+</section>

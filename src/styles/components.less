@@ -1,0 +1,166 @@
+.button {
+  .clean-button;
+  .relative;
+  padding: 5px;
+  padding-left: 0;
+  font-weight: 700;
+    &::after {
+      content: '';
+      .absolute;
+      width: 12px;
+      height: 4px;
+      background: @main-color;
+      bottom: 0px;
+      left: 0;
+      transition: width .3s ease-out;
+    }
+    &:hover {
+      &:after {
+        width: 50%;
+      }
+    }
+}
+
+.button-primary {
+
+}
+
+.button-secondary {
+
+}
+
+// ^-^ HAMBURGER ^-^
+.hamburger {
+  margin-right: 5px;
+  .inline-block;
+  height: 12px;
+  transform-origin: center center;
+  transition: transform .3s ease;
+  span {
+    .block;
+    height: 2px;
+    transition: background-color .3s ease-in-out, transform .3s ease-in-out, width .3s ease-in-out;
+  }
+  &--top {
+    margin-bottom: 3px;
+  }
+  &--top, &--bottom {
+    width: 16px;
+    background-color: #eee;
+  }
+  &--middle {
+    width: 8px;
+    transform: translateX(4px);
+    margin-bottom: 3px;
+    background-color: @main-color;
+  }
+}
+
+
+// ^-^ SECTIONS ^-^ 
+section {
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+.dark-section {
+  background-color: @dark-color;
+  color: white;
+}
+
+// ^-^ TIMES CLOSE BUTTON ^-^
+@btn-line-width: 2px;
+@btn-angle: 45deg;
+@btn-line-height: 56px;
+.times-close-btn {
+  z-index: 1000;
+  .fixed;
+  top: 50px;
+  right: 150px;
+  width: cos(@btn-angle) * @btn-line-height;
+  height: @btn-line-height;
+  transition: opacity .3s ease-in-out;
+  &::before, &::after {
+    top: 0;
+    content: '';
+    .absolute;
+    width: @btn-line-width;
+    height: 100%;
+    background: white;
+  }
+  &::before {
+    left: 0;
+    transform-origin: right bottom;
+    transform: rotate(45deg) translateX(-@btn-line-width);
+  }
+  &::after {
+    transform-origin: left bottom;
+    right: 0;
+    transform: rotate(-45deg) translateX(@btn-line-width);
+  }
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+
+// ^-^ PRELOADER ^-^ 
+.preloader {
+  .fixed;
+  .full-width;
+  height: 100vh;
+  .flex;
+  .flex-center;
+  z-index: 500;
+  background-color: @dark-color;
+  transition: opacity .3s ease-in-out;
+}
+// http://tobiasahlin.com/spinkit/
+.spinner {
+  margin: 100px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.cube1, .cube2 {
+  background-color: white;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: sk-cubemove 1.8s infinite ease-in-out;
+  animation: sk-cubemove 1.8s infinite ease-in-out;
+}
+
+.cube2 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+@-webkit-keyframes sk-cubemove {
+  25% { -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5) }
+  50% { -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg) }
+  75% { -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5) }
+  100% { -webkit-transform: rotate(-360deg) }
+}
+
+@keyframes sk-cubemove {
+  25% { 
+    transform: translateX(42px) rotate(-90deg) scale(0.5);
+    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+  } 50% { 
+    transform: translateX(42px) translateY(42px) rotate(-179deg);
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
+  } 50.1% { 
+    transform: translateX(42px) translateY(42px) rotate(-180deg);
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+  } 75% { 
+    transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+  } 100% { 
+    transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
+  }
+}
