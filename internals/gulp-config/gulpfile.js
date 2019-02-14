@@ -7,5 +7,5 @@ require('./assets');
 require('./images');
 
 gulp.task('dev', ['images_dev', 'html_dev', 'watch_assets']);
-gulp.task('prod', ['images_prod', 'html_prod']);
+gulp.task('prod', ['images_dev', 'html_prod']);
 gulp.task('default', isDevMode ? ['dev'] : ['prod']);

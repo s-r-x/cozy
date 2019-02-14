@@ -17,12 +17,6 @@ function detectmob() {
 
 export const isMobile = detectmob();
 
-export function polarToCartesian(theta, r) {
-  var x = r * Math.cos(theta);
-  var y = r * Math.sin(theta); 
-  return [ x, y ];
-}
-
 export const isPortrait = window.innerHeight < window.innerWidth;
 
 export const IMAGES_BASE_URL = '/images';

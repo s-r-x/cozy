@@ -11,6 +11,7 @@ const { Sprite, Container, loader, autoDetectRenderer, filters, WRAP_MODES } = P
 const pr = '.feedback-slider';
 const $root = qs(pr);
 const DOMrefs = {
+  sect: qs('.feedback-section'),
   canvasWrap: $root.querySelector('figure'),
   canvas: $root.querySelector('canvas'),
   prevBtn: $root.querySelector(`${pr}--prev`),
@@ -38,6 +39,7 @@ let isAnimating = false;
 let sprite;
 let filter;
 let filterSprite;
+const myticker = new PIXI.ticker.Ticker();
 function onloadHandler() {
   updateValues(feedbackList[activeSlide]);
   $createDots();
@@ -49,8 +51,8 @@ function onloadHandler() {
   filter.padding = 0;
   filter.scale.x = 0;
   filter.scale.y = 0;
-  filterSprite.scale.x = 7;
-  filterSprite.scale.y = 7;
+  filterSprite.scale.x = 0;
+  filterSprite.scale.y = 0;
   filterSprite.texture.baseTexture.wrapMode = WRAP_MODES.MIRRORED_REPEAT;
 
   stage.addChild(sprite);
@@ -58,7 +60,18 @@ function onloadHandler() {
   stage.filters = [ filter ];
 
   scaleSlide(sprite);
-
+  myticker.add(() => renderer.render(stage));
+  myticker.start();
+  if(!isMobile) {
+    filter.scale.x = 15;
+    filter.scale.y = 15;
+    filterSprite.scale.x = 4;
+    filterSprite.scale.y = 4;
+    myticker.add(() => {
+      filterSprite.x += 0.15;
+      filterSprite.y = - 0.5;
+    });
+  }
   if(isMobile) {
     loadSwiper()
       .then(({ init }) => init({
@@ -68,6 +81,20 @@ function onloadHandler() {
       }))
       .catch(err => console.error('could\'t load feedback swiper'));
   }
+  renderer.plugins.interaction.on('pointerover', mouseoverHandler);
+  renderer.plugins.interaction.on('pointerout', mouseoutHandler);
+}
+function mouseoverHandler() {
+  TweenLite.to(filter.scale, 1, {
+    x: 0,
+    y: 0,
+  });
+}
+function mouseoutHandler() {
+  TweenLite.to(filter.scale, 1, {
+    x: 15,
+    y: 15,
+  });
 }
 function $createDots() {
   const $frag = document.createDocumentFragment();  
@@ -99,7 +126,6 @@ function scaleSlide(sprite) {
   sprite.scale.x = ratio;
   sprite.scale.y = ratio;
   renderer.resize(width * ratio, height * ratio);
-  renderer.render(stage);
 }
 
 async function changeSlide() {
@@ -112,29 +138,13 @@ async function changeSlide() {
   tl.add('START', 0);
   tl.add('FADE_END', TIME);
   // photo 
-  tl.to(filter.scale, TIME, {
-    x: 15,
-    y: 15,
-    ease: Power1.easeInOut,
-    onUpdate() {
-      renderer.render(stage);
-    },
+  tl.to(sprite, TIME, {
     onComplete() {
       sprite.texture = texture;
-    }
-  }, 'START');
-  tl.to(sprite, TIME, {
+    },
     ease: Power1.easeInOut,
     alpha: 0.025,
   }, 'START')
-  tl.to(filter.scale, TIME, {
-    x: 0,
-    y: 0,
-    ease: Power1.easeInOut,
-    onUpdate() {
-      renderer.render(stage);
-    }
-  }, 'FADE_END');
   tl.to(sprite, TIME, {
     ease: Power1.easeInOut,
     alpha: 1,
@@ -198,8 +208,6 @@ function normalizeNumber(n) {
 
 
 // ^-^ EVENTS ^-^ 
-// button clicks
-
 function nextSlide() {
   if(loader.loading || isAnimating) {
     return;

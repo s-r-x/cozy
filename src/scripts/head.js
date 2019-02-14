@@ -9,7 +9,7 @@ const { Container, loader, Sprite, Graphics, WRAP_MODES, filters, autoDetectRend
 
 const FILTER_STATIC_SCALE = 15;
 const RESIZE_DELAY = 750;
-const CIRCLE_RADIUS = 350;
+const CIRCLE_RADIUS = 300;
 
 const $container = qs('.main-head');
 const $canvas = $container.querySelector('#head-bg');
@@ -75,8 +75,10 @@ const moveHandler = e => {
     isFirstMove = false;
   }
   const x = e.clientX, y = e.clientY + document.documentElement.scrollTop;
-  graphics.x = x;
-  graphics.y = y;
+  TweenLite.to(graphics, .8, {
+    x, 
+    y,
+  });
 };
 __ee__.on('load', onload);
 
@@ -95,7 +97,6 @@ const resizeHandler = throttle(() => {
     bg2.width = height * bgRatio;
   }
   renderer.resize(width, height);
-  renderer.render(stage);
 }, RESIZE_DELAY);
 
 const scrollObserver = new IntersectionObserver(entries => {
